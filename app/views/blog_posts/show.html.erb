@@ -1,0 +1,32 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<%= @blog_post.title %>
+	</div>
+	<div class="panel-body">
+		<p> by <%= @blog_post.user.username %></p>
+		<p><%= time_ago_in_words(@blog_post.created_at) %> ago </p>
+		<p><%= @blog_post.blog_entry.html_safe %></p>
+	</div>
+	<% if current_user.id == @blog_post.user_id %>
+	<div class="panel-footer">
+		<%= link_to "Edit", edit_blog_post_path(@blog_post), class: "btn btn-warning" %>
+	<% end %>
+		<%= link_to "All Posts", blog_posts_path, class: "btn btn-default" %>
+	</div>
+   </div>
+<div class="panel panel-success">
+	<div class= "panel-heading">
+		make a comment.....
+	</div>
+	<div class="panel-body">
+		<%= render 'comments/form' %>
+	</div>
+</div>
+<div class="panel panel-success">
+	<div class="panel-heading">
+		All comments.....
+	</div>
+		<div class="panel-body">
+			<%= render @comment %>
+		</div>
+</div>

@@ -1,0 +1,19 @@
+<% @blog_post.comments.each do |comment| %>
+
+<h4> 
+	<%= link_to comment.user.username, user_posts_path(id: comment.user.username) %>
+</h4>
+<p>
+	<%= time_ago_in_words(comment.created_at) %> ago
+</p>
+
+<p>
+	<%= comment.comment %>
+</p>
+
+<% if current_user.id == comment.user_id %>
+  <%= link_to "Edit", edit_comment_path(comment), class: "btn btn-warning" %>
+  <%= link_to "Delete", comment_path(comment), method: :delete, data: {confirm: "Are You Sure?" }, class: "btn btn-danger" %>
+  <% end %>
+
+<% end %>

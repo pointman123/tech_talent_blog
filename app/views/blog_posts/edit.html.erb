@@ -1,0 +1,12 @@
+<h1>Editing Blog Post</h1>
+<%= image_tag current_user.avatar.url %>
+<!-- or -->
+<%= image_tag @blog_post.user.avatar.url %>
+ <!-- need to choose one -->
+
+<%= render 'form' %>
+
+<br>
+
+<%= link_to "Back", blog_post_path(@blog_post), class: "btn btn-info" %>
+<%= link_to "All Blog Posts", blog_post_path, class: "btn btn-default" %>
